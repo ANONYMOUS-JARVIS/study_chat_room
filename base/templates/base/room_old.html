@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .room-container{
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+            }
+        </style>
+
+    </head>
+    <body>
+        {% extends "main.html" %}
+        {%block content%}
+
+
+        <div class="room-container" >
+            <div >
+                    <h1>{{ro.name}}</h1> 
+                    <p>{{ro.description}}</p>
+                    <div class=" contain-wrapper">
+                        <h3>conversations</h3>
+                        <hr>
+                        {% for message in room_messages %}
+                            <div>
+                                {% if request.user == message.user %}
+                                <a href="{% url 'delete-message' message.id %}">Delete</a>
+                                {% endif %}
+                                <small>@{{message.user}}   {{message.create|timesince}} ago</small>
+                                <p>{{message.body}}</p>
+                                </div>
+                        {%endfor%}
+                    </div>
+                    
+                        {% if request.user.is_authenticated %}
+                        <div class="contain-form">
+                            <form method="POST" action="">
+                                {%csrf_token%}
+                                <input type="text" name="body" placeholder="drop your comments here"/>
+                            </form>
+                        </div>
+                        {%endif%}
+            </div>
+
+            <div>
+                <h3>Participents</h3>
+                <hr>
+                {% for user in  participents%}
+                    <div>
+                        <p>@{{user.username}}</p>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+        {% endblock %}       
+        <script src="" async defer></script>
+    </body>
+</html>

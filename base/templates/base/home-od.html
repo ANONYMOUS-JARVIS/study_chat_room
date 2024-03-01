@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% extends "main.html" %}
+        {%block content%}
+        <style>
+            .home-container{
+                display: grid;
+                grid-template-columns: 1fr 3fr 1fr;
+            }
+        </style>
+        
+        <div Class="home-container">
+            <div>
+                <h3>Browrs topics</h3>
+                <hr>
+                <div>
+                    <a href="{% url 'home' %}">All</a>
+                </div>
+                {% include 'base/topic_components.html' %}
+   
+            </div>
+            <div>
+                <h1> welcome home page </h1>
+                <a href="{% url 'creat-form' %}">creat-form</a>
+                <br>
+                <div>
+                    <div>
+                        <h5 style="color: #00f300;"> <span> {{room_count}} </span> Avaible rooms</h5>
+                        {% include 'base/feed_components.html' %}
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <h3>Recent activity</h3>
+                <br>
+                {% include 'base/activity_components.html' %}
+
+            </div>
+
+        </div>
+
+        {% endblock %}
+
+        
+        <script src="" async defer></script>
+    </body>
+</html>
