@@ -12,15 +12,10 @@
 
   <body>
 
-    {%include "nav.html"%}
-
-
-    
-    
+    {%include "nav.html"%}    
     {% block content %}
-    
     {% if messages %}
-    <ul class=" messages">
+    <ul class="messages">
       {% for message in messages %}
           <li>{{message}}</li>
       {% endfor %}

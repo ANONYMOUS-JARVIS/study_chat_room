@@ -88,7 +88,7 @@ def room(request,pk):
 
 
 
-@ login_required(login_url='login')
+@login_required(login_url='login')
 def creat_form(request):
     form=Roomform()
     topics=Topic.objects.all()
@@ -162,7 +162,7 @@ def updateUser(request):
     user=request.user
     form=Userform(instance=user)
     if request.method =='POST':
-        form=Userform(request.POST,request.FILES, instance=user)
+        form=Userform(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('user_pro',pk=user.id)
