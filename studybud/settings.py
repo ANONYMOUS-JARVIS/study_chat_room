@@ -1,3 +1,4 @@
+import os
 """
 Django settings for studybud project.
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-w_(%yu=@cro3jf8hzom$vrxk7az)f(0ns2(-^ie_7z62&5-t0-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -123,9 +124,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL= '/image/'
-
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS= [
-    BASE_DIR /'static'
+    BASE_DIR /'static',os.path.join(BASE_DIR,'static'),
 
     ]
 MEDIA_ROOT = BASE_DIR /'static/image'
