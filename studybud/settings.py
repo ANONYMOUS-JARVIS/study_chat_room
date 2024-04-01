@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w_(%yu=@cro3jf8hzom$vrxk7az)f(0ns2(-^ie_7z62&5-t0-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+CSRF_TRUSTED_ORIGINS = ['https://web-production-f272.up.railway.app']
 
 ROOT_URLCONF = 'studybud.urls'
 
